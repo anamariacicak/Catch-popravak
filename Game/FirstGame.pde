@@ -52,7 +52,7 @@ class FirstGame{
       
       if(obj.posY>height){
         objects.remove(i);
-        if(obj.bomb==false){
+        if(obj.bomb==false && obj.points==5){
           error.play();
           lives--;
           if(lives<=0)
@@ -64,7 +64,18 @@ class FirstGame{
        && obj.posX+obj.width/2>mouseX-basket.width/2 && obj.posX+obj.width/2<mouseX+basket.width/2){
         if(obj.bomb==false){
           pop.play();
-          score+=obj.points;
+          if(obj.points==1 && lives<3) lives++;
+          else if(obj.points==2){
+            time1=0;
+            time2=0;
+            timespeed1=0;
+            timespeed2=0;
+            time=1000;
+            low=700;
+            up=1500;
+            secondsToFall=3;
+          }
+          else score+=obj.points;
         }
         else{
           error.play();
@@ -81,6 +92,12 @@ class FirstGame{
       rnd=int(random(0,numFall-1));
       if(rnd==0){
         obj=new FallingObject(rnd, int(random(0,width-width/10)), 0, true);
+      }
+      else if(rnd>=14 && rnd<20){
+        obj=new FallingObject(rnd, int(random(0,width-width/10)), 1, false); //srce
+      }
+      else if(rnd>=20){
+        obj=new FallingObject(rnd, int(random(0,width-width/10)), 2, false); //puz
       }
       else{
         obj=new FallingObject(rnd, int(random(0,width-width/10)), 5, false);
