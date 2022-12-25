@@ -48,13 +48,13 @@ int volume;
 //other variables
 int score; //player game score
 int numFall; //number of falling object
-
+int X=0;
 int size;
 int difficulty;
 boolean first=true;//used to play music only once
 
 void setup() {
-  mode=true;
+  mode=false;
   size=1;
   difficulty=1;
   size(700,600);
@@ -105,6 +105,17 @@ void setup() {
   init();
 
 }
+void keyPressed(){
+
+if(keyCode == LEFT ){
+X-=50;
+ }
+
+if(keyCode == RIGHT ){
+X+= 50;
+ }
+}
+
 
 void draw() {
   if ( homeB ) {
@@ -181,6 +192,7 @@ void init(){
   background1.resize(width, height);
   basket = loadImage("basket.png");
   basket.resize(width/5, 0);
+  X=basket.width/2;
   
   for (int i=0; i<numFall; ++i) {
     objectImages[i] = loadImage(i+".png");

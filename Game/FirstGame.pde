@@ -60,8 +60,14 @@ class FirstGame{
         }
       }
       
-     else if(obj.posY+obj.height>height-basket.height && obj.posY<height-basket.height
-       && obj.posX+obj.width/2>mouseX-basket.width/2 && obj.posX+obj.width/2<mouseX+basket.width/2){
+     else if((obj.posY+obj.height>height-basket.height && obj.posY<height-basket.height
+       && obj.posX+obj.width/2>mouseX-basket.width/2 && obj.posX+obj.width/2<mouseX+basket.width/2 && mode==true) ||
+       (obj.posY+obj.height>height-basket.height && obj.posY<height-basket.height
+       && obj.posX+obj.width/2>X-basket.width/2-50 && obj.posX+obj.width/2<X+basket.width/2+50 && mode==false)){
+         print("X: ", X);
+         print("\n");
+         print("X-basket.width/2: ", X-basket.width/2); print("\n");
+         print("X+basket.width/2 ", X+basket.width/2); print("\n");
         if(obj.bomb==false){
           pop.play();
           if(obj.points==1 && lives<3) lives++;
@@ -153,8 +159,13 @@ class FirstGame{
     
     
 
-      
-    image(basket,mouseX-basket.width/2,height-basket.height);
+     //true->mouse
+    if(mode==true){
+      image(basket,mouseX-basket.width/2,height-basket.height);
+    }
+    else{    
+      image(basket,X,height-basket.height);      
+    }
       
     //.................back button....................
     if(overCircle(30,height-50,50)==true){  
