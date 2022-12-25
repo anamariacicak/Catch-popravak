@@ -70,7 +70,7 @@ class FirstGame{
             time2=0;
             timespeed1=0;
             timespeed2=0;
-            time=1000;
+            time=-1;
             low=700;
             up=1500;
             secondsToFall=3;
