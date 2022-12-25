@@ -42,6 +42,7 @@ SoundFile error;
 SoundFile click;
 SoundFile pop;
 boolean musicOn;
+boolean mode; //true->mouse, false ->keyboard
 int volume;
 
 //other variables
@@ -53,6 +54,7 @@ int difficulty;
 boolean first=true;//used to play music only once
 
 void setup() {
+  mode=true;
   size=1;
   difficulty=1;
   size(700,600);
@@ -97,6 +99,7 @@ void setup() {
   pop.amp(0.5);
   
   musicOn=true;
+
   volume=100;
   
   init();

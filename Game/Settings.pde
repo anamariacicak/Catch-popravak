@@ -167,8 +167,9 @@ class Settings{
     text(">", b*1.9, a*7.25);
     
     
-    //APPLY
-   if(overRect(b, a*8, rectW, rectH)==true){  
+    //keyboard
+    
+    if(overRect(b, a*8, rectW, rectH)==true){  
       fill(darkblue);
       stroke(darkblue);
     }
@@ -178,7 +179,27 @@ class Settings{
     }
     rect(b, a*8, rectW, rectH, 20);
     fill(white);
-    text("APPLY", width/2, a*8+rectH/2);
+
+    if(mode==true){
+      text("Mode: mouse", width/2, a*8+rectH/2);
+    }
+    else{
+      text("Mode: keyboard", width/2, a*8+rectH/2);
+    }
+    
+    
+    //APPLY
+   if(overRect(b, a*9, rectW, rectH)==true){  
+      fill(darkblue);
+      stroke(darkblue);
+    }
+    else{
+      fill(blue);
+      stroke(blue);
+    }
+    rect(b, a*9, rectW, rectH, 20);
+    fill(white);
+    text("APPLY", width/2, a*9+rectH/2);
 
     //Back.............................
     if(overCircle(50,50,50)==true){  
@@ -199,6 +220,8 @@ class Settings{
   
   void myMousePressed() {
 
+   
+    
     //Music On/Off
     if (overRect(b, a, rectW, rectH)==true){
       click.play();
@@ -249,6 +272,18 @@ class Settings{
    else if (overRect(b*1.8, a*7, b*0.2, a/2)==true){
      difficultytmp=(difficultytmp+1)%4;
    }
+   //mode
+   else if (overRect(b, a*8, rectW, rectH)==true){
+      click.play();
+      if(mode==true){
+        mode=false;
+        //song1.pause();
+      }
+      else{
+        mode=true;
+        //song1.play();
+      }
+    }
    //apply
    else if (overRect(b, a*8, rectW, rectH)==true){
      difficulty=difficultytmp;
@@ -265,6 +300,7 @@ class Settings{
      
      
    }
+   
     
     //Back button
    if(overCircle(50,50,50)==true){
