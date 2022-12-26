@@ -54,7 +54,7 @@ int difficulty;
 boolean first=true;//used to play music only once
 
 void setup() {
-  mode=false;
+  
   size=1;
   difficulty=1;
   size(700,600);
@@ -99,21 +99,24 @@ void setup() {
   pop.amp(0.5);
   
   musicOn=true;
-
   volume=100;
+  
+  //false -> keyboard
+  mode=false;
   
   init();
 
 }
+
 void keyPressed(){
 
-if(keyCode == LEFT ){
-X-=50;
- }
+  if(keyCode == LEFT && X>=50){
+    X-=50;
+  }
+  if(keyCode == RIGHT && X<=650){
+    X+= 50;
+   }
 
-if(keyCode == RIGHT ){
-X+= 50;
- }
 }
 
 

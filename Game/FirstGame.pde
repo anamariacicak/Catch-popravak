@@ -64,10 +64,6 @@ class FirstGame{
        && obj.posX+obj.width/2>mouseX-basket.width/2 && obj.posX+obj.width/2<mouseX+basket.width/2 && mode==true) ||
        (obj.posY+obj.height>height-basket.height && obj.posY<height-basket.height
        && obj.posX+obj.width/2>X-basket.width/2-50 && obj.posX+obj.width/2<X+basket.width/2+50 && mode==false)){
-         print("X: ", X);
-         print("\n");
-         print("X-basket.width/2: ", X-basket.width/2); print("\n");
-         print("X+basket.width/2 ", X+basket.width/2); print("\n");
         if(obj.bomb==false){
           pop.play();
           if(obj.points==1 && lives<3) lives++;
@@ -78,7 +74,9 @@ class FirstGame{
            up=1500;
            secondsToFall=3;
           }
-          else score+=obj.points;
+          else if(obj.points!=0 && obj.points!=1 && obj.points!=2){ //nije srce, nije puz, nije bomba
+              score+=obj.points;
+          }  
         }
         else{
           error.play();
